@@ -1,0 +1,38 @@
+{
+  "bindings": [
+    {
+      "authLevel": "Anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "l/{short}",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "found",
+      "databaseName": "urlshortener",
+      "collectionName": "links",
+      "createIfNotExists": true,
+      "connectionStringSetting": "CosmosDB",
+      "sqlQuery": "SELECT * from c where c.short = {short}"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "link",
+      "databaseName": "urlshortener",
+      "collectionName": "links",
+      "createIfNotExists": true,
+      "connectionStringSetting": "CosmosDB"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}

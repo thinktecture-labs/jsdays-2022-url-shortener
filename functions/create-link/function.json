@@ -1,0 +1,29 @@
+{
+  "bindings": [
+    {
+      "authLevel": "Anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "l",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "link",
+      "databaseName": "urlshortener",
+      "collectionName": "links",
+      "createIfNotExists": true,
+      "connectionStringSetting": "CosmosDB"
+
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
