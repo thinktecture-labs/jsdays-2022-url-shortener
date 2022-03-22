@@ -1,0 +1,18 @@
+<a routerLink="create">Create a link</a>
+
+<table>
+  <thead>
+  <tr>
+    <th>Original URL</th>
+    <th>Target URL</th>
+    <th>#</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="links$ | async as links">
+  <tr *ngFor="let link of links">
+    <td>{{ link.originalUrl }}</td>
+    <td><a [href]="link.targetUrl" target="_blank">{{ link.targetUrl }}</a></td>
+    <td>{{ link.hits }}</td>
+  </tr>
+  </tbody>
+</table>
